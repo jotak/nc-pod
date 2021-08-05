@@ -19,12 +19,7 @@
 # docker build --rm -t sostheim/nc-pod .
 #
 FROM ubuntu:latest
-MAINTAINER Rick Sostheim
-LABEL vendor="Samsung CNCT"
 
-RUN apt update
-RUN apt install netcat-openbsd net-tools iproute2 -y 
-
-COPY run-nc.sh /
-
-CMD ["/run-nc.sh"]
+RUN apt update \
+  && apt install netcat-openbsd net-tools iproute2 -y \
+  && rm -rf /var/lib/apt/lists/*

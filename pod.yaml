@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nc
+  labels:
+    app: fluentd
+spec:
+  containers:
+    - name: nc
+      image: quay.io/jotak/nc:latest 
+      command: ["nc"]
+      args: ["-lu","2055"]
+      ports:
+      - containerPort: 2055
